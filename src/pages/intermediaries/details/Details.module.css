@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.formItem {
+  margin: 1rem 0 !important;
+  height: 2rem;
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+}
