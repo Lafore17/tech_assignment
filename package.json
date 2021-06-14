@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./src/server.js",
     "start:client": "react-scripts start",
-    "build": "REACT_APP_API_URL=https://techassignment-1.herokuapp.com/ react-scripts build",
+    "build": "REACT_APP_API_URL=https://techassignment-1.herokuapp.com react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -8,7 +8,7 @@ const port = 8080;
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "../build")));
 
 let intermediaries = [
   {
@@ -38,11 +38,11 @@ let products = [
 
 // Intermediaries
 
-app.get("/intermediaries", (req, res) => {
+app.get("/api/intermediaries", (req, res) => {
   res.json(intermediaries);
 });
 
-app.get("/intermediaries/:id", (req, res) => {
+app.get("/api/intermediaries/:id", (req, res) => {
   const targetId = req.params.id;
   const targetIntermediary = intermediaries.find(
     (intermediary) => intermediary.id === +targetId
@@ -51,7 +51,7 @@ app.get("/intermediaries/:id", (req, res) => {
   res.json(targetIntermediary || {});
 });
 
-app.delete("/intermediaries/:id", (req, res) => {
+app.delete("/api/intermediaries/:id", (req, res) => {
   const targetId = req.params.id;
 
   intermediaries = intermediaries.reduce((accum, intermediary) => {
@@ -63,7 +63,7 @@ app.delete("/intermediaries/:id", (req, res) => {
   res.sendStatus(200);
 });
 
-app.post("/intermediaries", (req, res) => {
+app.post("/api/intermediaries", (req, res) => {
   const lastIndex = intermediaries.length - 1;
 
   intermediaries = [
@@ -78,7 +78,7 @@ app.post("/intermediaries", (req, res) => {
   res.sendStatus(201);
 });
 
-app.put("/intermediaries/:id", (req, res) => {
+app.put("/api/intermediaries/:id", (req, res) => {
   const targetId = req.params.id;
 
   intermediaries = intermediaries.reduce((accum, intermediary) => {
@@ -94,11 +94,11 @@ app.put("/intermediaries/:id", (req, res) => {
 
 // Products
 
-app.get("/products", (req, res) => {
+app.get("/api/products", (req, res) => {
   res.json(products);
 });
 
-app.delete("/products/:id", (req, res) => {
+app.delete("/api/products/:id", (req, res) => {
   const targetId = req.params.id;
 
   products = products.reduce((accum, product) => {
@@ -111,7 +111,7 @@ app.delete("/products/:id", (req, res) => {
 });
 
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
 });
 
-app.listen(port);
+app.listen(process.env.PORT || port);
