@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 
 interface CardProps {
   title: string;
-  label: string;
+  label?: string;
   className?: string;
   description?: string;
   editable?: boolean;
@@ -35,9 +35,11 @@ const Card: React.FC<CardProps> = ({
         title="Contemplative Reptile"
       />
       <CardContent>
-        <Typography gutterBottom component="span">
-          {label}
-        </Typography>
+        {label && (
+          <Typography gutterBottom component="span">
+            {label}
+          </Typography>
+        )}
         <Typography gutterBottom variant="h5" component="h2">
           {title}
         </Typography>

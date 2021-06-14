@@ -6,3 +6,9 @@
 .field {
   width: 100%;
 }
+
+.formItem {
+  margin: 1rem 0 !important;
+  height: 2rem;
+  font-size: 1rem;
+}

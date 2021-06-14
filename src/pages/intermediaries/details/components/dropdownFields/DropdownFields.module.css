@@ -1,9 +1,11 @@
 .inputsWrapper {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
 .addOptionButton {
   height: 100%;
+  align-self: flex-start;
+  min-width: 20% !important;
 }
